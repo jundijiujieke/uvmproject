@@ -2,7 +2,7 @@
 #./my_case0.sv
 #./my_case1.sv
 ./my_if.sv
-#./my_transaction.sv
+./my_transaction.sv
 ./my_driver.sv
 #./my_monitor.sv
 #./my_agent.sv
