@@ -13,6 +13,7 @@ class my_driver extends uvm_driver#(my_transaction);
       super.build_phase(phase);
       if(!uvm_config_db#(virtual my_if)::get(this, "", "vif", vif))
          `uvm_fatal("my_driver", "virtual interface must be set for vif!!!")
+	  //`uvm_info("Trace",$sformatf("%m"),UVM_HIGH);
    endfunction
 
    extern task main_phase(uvm_phase phase);
@@ -68,9 +69,18 @@ task my_driver::main_phase(uvm_phase phase);
    begin
    		vif.start <= 1'b0;
    end
-
    
    @(negedge vif.progress);
+   		vif.ram_en <= 1'b1;
+
+ for ( int i = 0; i < 1024; i++ ) begin
+      @(posedge vif.clk);
+    //  vif.valid <= 1'b1;
+	  vif.addr <= i;
+      vif.din <= i; 
+   end
+
+ /*  @(negedge vif.progress);
    	 	vif.ram_en <= 1'b1;
    @(posedge vif.clk);
    for(int i = 0;i<1024;i=i+1)begin
@@ -78,7 +88,7 @@ task my_driver::main_phase(uvm_phase phase);
 			vif.addr <= i;
 		end
    end
-
+*/
    phase.drop_objection(this);
 endtask
 
