@@ -56,7 +56,7 @@ imdct_fft_with_ram256 imdct_fft_with_ram256_inst(
 
  .dout    	(output_if.dout     ), 
  .done    	(output_if.done     ),
- .progress  (input_if.progress ) 
+ .progress  (output_if.progress ) 
 );
 
 
@@ -80,6 +80,8 @@ end
 
 initial begin
     uvm_config_db#(virtual my_if)::set(null, "uvm_test_top", "vif", input_if);
+	uvm_config_db#(virtual my_if)::set(null, "uvm_test_top", "vif1", output_if);
+
 //    uvm_config_db#(virtual my_if)::set(null, "uvm_test_top.env.i_agt.mon", "vif", input_if);
 //    uvm_config_db#(virtual my_if)::set(null, "uvm_test_top.env.o_agt.mon", "vif", output_if);
     
