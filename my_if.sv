@@ -17,9 +17,9 @@ logic auto;   //0:manual 1: auto
 logic bit_rev;   //0 : ext_addr no rev, 1 : ext_addr bit rev, 
 
 
-wire [31:0] dout; 
-wire done;
-wire progress;
+logic [31:0] dout; 
+logic done;
+logic progress;
 
 endinterface
 
