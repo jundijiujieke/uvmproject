@@ -4,7 +4,7 @@ class case0_sequence extends uvm_sequence #(my_transaction);
    my_transaction m_trans;
   // wire progress;
    virtual  my_if vif1;
-   wire progress;
+ //  wire progress;
 
    function  new(string name= "case0_sequence");
       super.new(name);
@@ -17,11 +17,11 @@ class case0_sequence extends uvm_sequence #(my_transaction);
          `uvm_info("seq0", "get count value via config_db",UVM_LOW)
       else
          `uvm_error("seq0", "can't get count value!") 
-	  if(uvm_config_db#(wire)::get(null, get_full_name(), "progress", progress))//get function, first variance must be component, but sequence is not component,use null
+/*	  if(uvm_config_db#(wire)::get(null, get_full_name(), "progress", progress))//get function, first variance must be component, but sequence is not component,use null
          `uvm_info("seq0", $sformatf("get count value %0d via config_db", progress), UVM_MEDIUM)
       else
          `uvm_error("seq0", "can't get count value!") 
-
+*/
    endtask
 
    virtual task body();

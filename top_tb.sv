@@ -80,7 +80,7 @@ initial begin
 	uvm_config_db#(virtual my_if)::set(null, "uvm_test_top.env.i_agt.drv", "vif1", output_if);
 	uvm_config_db#(virtual my_if)::set(null, "uvm_test_top", "vif", output_if);
 	uvm_config_db#(virtual my_if)::set(null, "uvm_test_top.env.i_agt.aqr.case0_sequence", "vif1", output_if);
-	uvm_config_db#(wire)::set(null, "uvm_test_top.env.i_agt.aqr.case0_sequence", "progress", progress);
+//	uvm_config_db#(wire)::set(null, "uvm_test_top.env.i_agt.aqr.case0_sequence", "progress", progress);
 
 //	uvm_config_db#(wire)::set(null,"uvm_test_top.", "progress", progress);
 //    uvm_config_db#(virtual my_if)::set(uvm_root::get(), "uvm_test_top.env.i_agt.drv", "vif", input_if);
