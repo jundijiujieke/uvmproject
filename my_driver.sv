@@ -45,7 +45,6 @@ task my_driver::drive_one_pkt(my_transaction tr);
 	`uvm_info("my_driver", "begin to drive one pkt", UVM_LOW);
 	vif.we = ((tr.we == RD) ? 0 : 1);
    repeat(1) @(posedge vif.clk);
-	 vif.din = tr.din;
 	 vif.we = tr.we;
 	 vif.ram_en = tr.ram_en;
 	 vif.addr = tr.addr;
@@ -58,10 +57,16 @@ task my_driver::drive_one_pkt(my_transaction tr);
 	 vif.bit_rev = tr.bit_rev;   //0 
 	 tr.done = vif1.done;
 	 tr.progress = vif1.progress;
-
-	 
+     
+	/*while(tr.ram_en != 1'b1)begin
+		@(posedge vif.clk);
+	end*/
 	@(posedge vif.clk);
-	if(tr.we == RD)begin
+	if((tr.we == WR)&&(tr.ram_en == 1'b1))begin
+		 vif.din = tr.din;
+	end
+	@(posedge vif.clk)
+	if((tr.we == RD)&&(tr.ram_en == 1'b1))begin
 		tr.dout = vif1.dout; 
 	end        
    
