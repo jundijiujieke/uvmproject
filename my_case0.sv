@@ -29,8 +29,8 @@ class case0_sequence extends uvm_sequence #(my_transaction);
       if(!$cast(rsp, response))
          `uvm_error("seq", "can't cast")
       else begin
-         `uvm_info("seq", "get one response", UVM_MEDIUM)
-         rsp.print();
+ //        `uvm_info("seq", "get one response", UVM_MEDIUM)
+ //        rsp.print();
       end
    endfunction
 

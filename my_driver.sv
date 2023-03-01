@@ -29,8 +29,16 @@ task my_driver::main_phase(uvm_phase phase);
 	
 	vif.din = 32'b0;
 	vif.ram_en = 1'b0;
-	vif1.done = 1'b0;
-	vif1.progress = 1'b0;
+	vif.we = 1'b0;
+	vif.start = 1'b0;
+	vif.auto = 1'b0;
+	vif.es  = 5'b0;
+	vif.func = 1'b0;
+	vif.bit_rev = 1'b1;
+	vif.tabidx = 1'b0;//	vif1.done = 1'b0;
+	vif.addr = 10'd0 ;
+	vif.mode = 1'b0;
+//	vif1.progress = 1'b0;
 
    while(!vif.rst_n)
       @(posedge vif.clk);
@@ -45,11 +53,13 @@ task my_driver::main_phase(uvm_phase phase);
 endtask
 
 task my_driver::drive_one_pkt(my_transaction tr);
-	`uvm_info("my_driver", "begin to drive one pkt", UVM_LOW);
-	vif.we = ((tr.we == RD) ? 0 : 1);
+//	`uvm_info("my_driver", "begin to drive one pkt", UVM_LOW);
    repeat(1) @(posedge vif.clk);
-	 vif.we = tr.we;
-	 vif.ram_en = tr.ram_en;
+     vif.ram_en = tr.ram_en;
+	 vif.we = ((tr.we == RD) ? 0 : 1);
+//	 vif.din = (((tr.we == RD)&&(tr.ram_en)) ? 0 : tr.din );
+	 vif.din = ((tr.we == WR) ? 0 : tr.din );
+
 	 vif.addr = tr.addr;
 	 vif.start = tr.start;
 	 vif.tabidx = tr.tabidx;
@@ -58,20 +68,14 @@ task my_driver::drive_one_pkt(my_transaction tr);
 	 vif.func = tr.func;
 	 vif.auto = tr.auto;   //0:manual 1: auto
 	 vif.bit_rev = tr.bit_rev;   //0 
-	 tr.done = vif1.done;
-	 tr.progress = vif1.progress;
-     
-	/*while(tr.ram_en != 1'b1)begin
-		@(posedge vif.clk);
-	end*/
-	@(posedge vif.clk);
-	if((tr.we == WR)&&(tr.ram_en == 1'b1))begin
-		 vif.din = tr.din;
-	end
-	@(posedge vif.clk)
-	if((tr.we == RD)&&(tr.ram_en == 1'b1))begin
-		tr.dout = vif1.dout; 
-	end        
+
+//	 tr.done = vif1.done;
+//	 tr.progress = vif1.progress;
+	 
+//	@(posedge vif.clk);
+//	if(tr.we == RD)begin
+//		tr.dout = vif1.dout; 
+//	end        
    
 
  endtask
