@@ -14,11 +14,8 @@ class my_driver extends uvm_driver#(my_transaction);
       super.build_phase(phase);
       if(!uvm_config_db#(virtual my_if)::get(this, "", "vif", vif))
          `uvm_fatal("my_driver", "virtual interface must be set for vif!!!")
-	  //`uvm_info("Trace",$sformatf("%m"),UVM_HIGH);
 	 if(!uvm_config_db#(virtual my_if)::get(this, "", "vif1", vif1))
          `uvm_fatal("my_driver", "virtual interface must be set for vif1!!!")
-	  //`uvm_info("Trace",$sformatf("%m"),UVM_HIGH);
-
    endfunction
 
    extern task main_phase(uvm_phase phase);
@@ -38,15 +35,14 @@ task my_driver::main_phase(uvm_phase phase);
 	vif.tabidx = 1'b0;//	vif1.done = 1'b0;
 	vif.addr = 10'd0 ;
 	vif.mode = 1'b0;
-//	vif1.progress = 1'b0;
 
    while(!vif.rst_n)
       @(posedge vif.clk);
    while(1) begin
       seq_item_port.get_next_item(req);
       drive_one_pkt(req);
-	  rsp = new("rsp");
-	  rsp.set_id_info(req);
+	  rsp = new("rsp");//response transaction
+	  rsp.set_id_info(req);//get rsp id for req
 	  seq_item_port.put_response(rsp);
       seq_item_port.item_done();
    end
@@ -57,8 +53,8 @@ task my_driver::drive_one_pkt(my_transaction tr);
    repeat(1) @(posedge vif.clk);
      vif.ram_en = tr.ram_en;
 	 vif.we = ((tr.we == RD) ? 0 : 1);
-//	 vif.din = (((tr.we == RD)&&(tr.ram_en)) ? 0 : tr.din );
-	 vif.din = ((tr.we == WR) ? 0 : tr.din );
+	 vif.din = (((tr.we == WR)&&(tr.ram_en)) ? tr.din : 0 );
+//	 vif.din = ((tr.we == WR) ? 0 : tr.din );
 
 	 vif.addr = tr.addr;
 	 vif.start = tr.start;
@@ -69,13 +65,13 @@ task my_driver::drive_one_pkt(my_transaction tr);
 	 vif.auto = tr.auto;   //0:manual 1: auto
 	 vif.bit_rev = tr.bit_rev;   //0 
 
-//	 tr.done = vif1.done;
-//	 tr.progress = vif1.progress;
+	 tr.progress = vif1.progress;
+	 tr.done = vif1.done;
 	 
-//	@(posedge vif.clk);
-//	if(tr.we == RD)begin
-//		tr.dout = vif1.dout; 
-//	end        
+//	 @(posedge vif.clk);
+	if((tr.we == RD)&&(tr.ram_en))begin
+		tr.dout = vif1.dout; 
+	end        
    
 
  endtask

@@ -2,10 +2,7 @@
 `define MY_CASE0__SV
 class case0_sequence extends uvm_sequence #(my_transaction);
    my_transaction m_trans;
-  // wire progress;
-   virtual  my_if vif1;
- //  wire progress;
-
+ 
    function  new(string name= "case0_sequence");
       super.new(name);
    endfunction 
@@ -13,24 +10,18 @@ class case0_sequence extends uvm_sequence #(my_transaction);
     virtual task pre_body();
 	  	$display("%s",get_full_name());
 
-      if(uvm_config_db#(virtual my_if)::get(null, get_full_name(), "vif1", vif1))//get function, first variance must be component, but sequence is not component,use null
-         `uvm_info("seq0", "get count value via config_db",UVM_LOW)
-      else
-         `uvm_error("seq0", "can't get count value!") 
 	use_response_handler(1);
-/*	  if(uvm_config_db#(wire)::get(null, get_full_name(), "progress", progress))//get function, first variance must be component, but sequence is not component,use null
-         `uvm_info("seq0", $sformatf("get count value %0d via config_db", progress), UVM_MEDIUM)
-      else
-         `uvm_error("seq0", "can't get count value!") 
-*/
+	 
    endtask
 
-   virtual function void response_handler(uvm_sequence_item response);
+  virtual function void response_handler(uvm_sequence_item response);
       if(!$cast(rsp, response))
          `uvm_error("seq", "can't cast")
       else begin
  //        `uvm_info("seq", "get one response", UVM_MEDIUM)
- //        rsp.print();
+//      `uvm_info("seq0", $sformatf("get count value %0d via config_db", rsp.progress), UVM_MEDIUM)
+
+//         rsp.print();
       end
    endfunction
 
@@ -41,24 +32,25 @@ class case0_sequence extends uvm_sequence #(my_transaction);
       repeat (1) begin
 
 	  for(int i = 0; i < 1024; i = i + 1)begin
-         `uvm_do_with(m_trans,{m_trans.addr == i;m_trans.we == RD;m_trans.ram_en == 1'b1;m_trans.start == 1'b0;})//write 1024 data into SRAM
-//		 get_response(rsp);
-//		 rsp.print();
+         `uvm_do_with(m_trans,{m_trans.addr == i;m_trans.we == WR;m_trans.ram_en == 1'b1;m_trans.start == 1'b0;})//write 1024 data into SRAM
 	  end
 
 	  `uvm_do_with(m_trans,{m_trans.ram_en == 1'b0;m_trans.start == 1'b1;})
-//	   get_response(rsp);
-//	   rsp.print();
+	  `uvm_do_with(m_trans,{m_trans.ram_en == 1'b0;m_trans.start == 1'b0;})
+	  `uvm_do_with(m_trans,{m_trans.ram_en == 1'b0;m_trans.start == 1'b0;})
 
       
-//	  while(vif1.progress == 1'b1)begin	  	
-//	  `uvm_do_with(m_trans,{m_trans.ram_en == 1'b0;m_trans.start == 1'b1;})//wait for caluculation finished
-//	  end
+	  while(1)begin	
+	  	if(m_trans.progress == 1'b1)begin
+	  		`uvm_do_with(m_trans,{m_trans.ram_en == 1'b0;m_trans.start == 1'b0;})//wait for caluculation finished
+	  		m_trans.print();	
+	   end 
+	   else
+	  		break;
+	  end
 
 	  for(int i = 0;i < 1024;i = i + 1)begin
-	  	 `uvm_do_with(m_trans,{m_trans.addr == i;m_trans.we == WR;m_trans.ram_en == 1'b1;m_trans.start == 1'b0;})//read 1024 data from SRAM
-	//	 get_response(rsp);
-	//     rsp.print();
+	  	 `uvm_do_with(m_trans,{m_trans.addr == i;m_trans.we == RD;m_trans.ram_en == 1'b1;m_trans.start == 1'b0;})//read 1024 data from SRAM
 
 	  end
 
