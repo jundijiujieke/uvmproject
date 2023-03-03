@@ -4,9 +4,9 @@
 class my_env extends uvm_env;
 
    my_agent   i_agt;
- //  my_agent   o_agt;
+   my_agent   o_agt;
    my_model   mdl;
- //  my_scoreboard scb;
+//   my_scoreboard scb;
 
 //   uvm_tlm_analysis_fifo #(my_transaction) agt_scb_fifo;
    uvm_tlm_analysis_fifo #(my_transaction) agt_mdl_fifo;
@@ -25,9 +25,9 @@ class my_env extends uvm_env;
    virtual function void build_phase(uvm_phase phase);//build the component
       super.build_phase(phase);
       i_agt = my_agent::type_id::create("i_agt", this);
-//	  o_agt = my_agent::type_id::create("o_agt",this);
+	  o_agt = my_agent::type_id::create("o_agt",this);
 	  i_agt.is_active = UVM_ACTIVE;
-//      o_agt.is_active = UVM_PASSIVE;
+      o_agt.is_active = UVM_PASSIVE;
 	  mdl = my_model::type_id::create("mdl",this);
 //	  scb = my_scoreboard::type_id::create("scb", this);
 //	  agt_scb_fifo = new("agt_scb_fifo",this);

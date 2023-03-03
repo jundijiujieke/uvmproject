@@ -1,5 +1,5 @@
 xrun(64): 19.09-s010: (c) Copyright 1995-2020 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	19.09-s010: Started on Mar 03, 2023 at 18:01:10 HKT
+TOOL:	xrun(64)	19.09-s010: Started on Mar 03, 2023 at 18:08:29 HKT
 xrun
 	-uvm
 	+libtext_.v
@@ -50,11 +50,11 @@ xrun
    User defined plus("+") options:
 	+libtext_.v
 
-Recompiling... reason: file './my_model.sv' is newer than expected.
-	expected: Fri Mar  3 17:42:22 2023
-	actual:   Fri Mar  3 18:01:08 2023
+Recompiling... reason: file './my_env.sv' is newer than expected.
+	expected: Fri Mar  3 18:04:08 2023
+	actual:   Fri Mar  3 18:08:27 2023
 Compiling UVM packages (uvm_pkg.sv cdns_uvm_pkg.sv) using uvmhome location /edatools/cadence/XCELIUM-19.09.010/tools/methodology/UVM/CDNS-1.1d
-file: ././my_model.sv
+file: ././my_env.sv
 file: ./../../rtl/IMDCT/imdct_fft_with_ram256.v
 xmvlog: *W,LIBNOU: Library "/edatools/xilinx/Vivado/2020.1/data/verilog/src/unisims" given but not used.
 	Total errors/warnings found outside modules and primitives:
@@ -131,17 +131,17 @@ xmelab: *W,ENUMERR (./my_monitor.sv,50|16): This assignment is a violation of Sy
 			streams:   4, words:  1344
 		worklib.imdct_fft_with_ram256:v <0x5e9c19bc>
 			streams:  69, words: 26168
-		worklib.uvm_pkg:sv <0x52b07f76>
+		worklib.uvm_pkg:sv <0x42c51306>
 			streams:  23, words: 21673
-		worklib.\$unit_0x485eccaf :compilation_unit <0x5936fe96>
+		worklib.\$unit_0x485eccaf :compilation_unit <0x23cb185f>
 			streams:  24, words: 20907
-		worklib.uvm_pkg:sv <0x5eace666>
-			streams:  40, words: 29622
-		worklib.uvm_pkg:sv <0x173c6980>
+		worklib.uvm_pkg:sv <0x08f7540b>
+			streams:  40, words: 30247
+		worklib.uvm_pkg:sv <0x2ec4ac60>
 			streams:  24, words: 20747
-		worklib.uvm_pkg:sv <0x67fe25b8>
+		worklib.uvm_pkg:sv <0x07812a4e>
 			streams:  47, words: 49952
-		worklib.uvm_pkg:sv <0x4172d82e>
+		worklib.uvm_pkg:sv <0x77626976>
 			streams:  25, words: 27997
 		worklib.uvm_pkg:sv <0x30e95aad>
 			streams:  31, words: 28247
@@ -151,8 +151,8 @@ xmelab: *W,ENUMERR (./my_monitor.sv,50|16): This assignment is a violation of Sy
 			streams: 298, words: 337805
 		worklib.uvm_pkg:sv <0x50126835>
 			streams:  24, words: 80671
-		worklib.top_tb:sv <0x6b1b6ecc>
-			streams:  89, words: 103051
+		worklib.top_tb:sv <0x1a171a57>
+			streams:  89, words: 104021
 		worklib.\$unit_0x485eccaf :compilation_unit <0x03b3946d>
 			streams:   0, words:     0
 	Building instance specific data structures.
@@ -162,7 +162,7 @@ xmelab: *W,ENUMERR (./my_monitor.sv,50|16): This assignment is a violation of Sy
 		Modules:                      46      18
 		Interfaces:                    2       1
 		Verilog packages:              4       4
-		Registers:                 14214   10350
+		Registers:                 14214   10351
 		Scalar wires:                 76       -
 		Expanded wires:               18       2
 		Vectored wires:              224       -
@@ -213,34 +213,39 @@ UVM_INFO @ 0: reporter [RNTST] Running test my_case0...
 uvm_test_top
 UVM_INFO @ 0: reporter [UVMTOP] UVM testbench topology:
 uvm_test_top: (my_case0@2662) {
-  env: (my_env@2768) {
-    agt_mdl_fifo: (uvm_tlm_analysis_fifo #(T)@2799) {
-      analysis_export: (uvm_analysis_imp@3119) @3119 
-      get_ap: (uvm_analysis_port@3069) @3069 
-      get_peek_export: (uvm_get_peek_imp@2971) @2971 
-      put_ap: (uvm_analysis_port@3020) @3020 
-      put_export: (uvm_put_imp@2920) @2920 
+  env: (my_env@2780) {
+    agt_mdl_fifo: (uvm_tlm_analysis_fifo #(T)@2853) {
+      analysis_export: (uvm_analysis_imp@3161) @3161 
+      get_ap: (uvm_analysis_port@3111) @3111 
+      get_peek_export: (uvm_get_peek_imp@3013) @3013 
+      put_ap: (uvm_analysis_port@3062) @3062 
+      put_export: (uvm_put_imp@2962) @2962 
     }
-    i_agt: (my_agent@2812) {
-      drv: (my_driver@3791) {
-        rsp_port: (uvm_analysis_port@3890) @3890 
-        seq_item_port: (uvm_seq_item_pull_port@3841) @3841 
+    i_agt: (my_agent@2824) {
+      drv: (my_driver@3833) {
+        rsp_port: (uvm_analysis_port@3932) @3932 
+        seq_item_port: (uvm_seq_item_pull_port@3883) @3883 
       }
-      mon: (my_monitor@3870) {
-        ap: (uvm_analysis_port@3976) @3976 
+      mon: (my_monitor@3912) {
+        ap: (uvm_analysis_port@4018) @4018 
       }
-      sqr: (my_sequencer@3158) {
-        rsp_export: (uvm_analysis_export@3216) @3216 
-        seq_item_export: (uvm_seq_item_pull_imp@3760) @3760 
+      sqr: (my_sequencer@3200) {
+        rsp_export: (uvm_analysis_export@3258) @3258 
+        seq_item_export: (uvm_seq_item_pull_imp@3802) @3802 
         arbitration_queue: - 
         lock_queue: - 
         num_last_reqs: 'd1 
         num_last_rsps: 'd1 
       }
     }
-    mdl: (my_model@2842) {
-      ap: (uvm_analysis_port@4095) @4095 
-      port: (uvm_blocking_get_port@4046) @4046 
+    mdl: (my_model@2884) {
+      ap: (uvm_analysis_port@4137) @4137 
+      port: (uvm_blocking_get_port@4088) @4088 
+    }
+    o_agt: (my_agent@2854) {
+      mon: (my_monitor@4168) {
+        ap: (uvm_analysis_port@4218) @4218 
+      }
     }
   }
 }
@@ -1306,4 +1311,4 @@ coverage setup:
 coverage files:
   model(design data) :  ./cov_work/scope/icc_47da2a22_00000000.ucm (reused)
   data               :  ./cov_work/scope/test_cov_appo/icc_47da2a22_00000000.ucd
-TOOL:	xrun(64)	19.09-s010: Exiting on Mar 03, 2023 at 18:01:14 HKT  (total: 00:00:04)
+TOOL:	xrun(64)	19.09-s010: Exiting on Mar 03, 2023 at 18:08:32 HKT  (total: 00:00:03)
