@@ -31,6 +31,7 @@ reg auto;   //0:manual 1: auto
 reg bit_rev;   //0 : ext_addr no rev, 1 : ext_addr bit rev, 
 
 reg rd_valid;
+//reg wr_valid;
 
 wire [31:0] dout; 
 wire done;
@@ -83,6 +84,16 @@ always@(posedge clk or negedge rst_n)begin
 		output_if.rd_valid <= ((input_if.ram_en)&(!input_if.we));
 	end
 end
+/*
+always@(posedge clk or negedge rst_n)begin
+	if(!rst_n)begin
+	   output_if.wr_valid <= 1'b0;
+	end
+	else begin
+		output_if.wr_valid <= ((input_if.ram_en)&(input_if.we));
+	end
+end*/
+
 
 initial begin
    run_test("my_case0");

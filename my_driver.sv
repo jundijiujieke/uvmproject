@@ -69,7 +69,8 @@ task my_driver::drive_one_pkt(my_transaction tr);
 	 tr.done = vif1.done;
 	 
 	tr.dout = (((tr.we == RD)&&(tr.ram_en)) ? vif1.dout :0);
-    tr.rd_valid = vif1.rd_valid; 
+    tr.rd_valid = vif1.rd_valid;
+//	tr.wr_valid = vif1.wr_valid;
 
  endtask
 

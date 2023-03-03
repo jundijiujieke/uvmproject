@@ -55,6 +55,8 @@ task my_monitor::collect_one_pkt(my_transaction tr);
 	 tr.done     = vif1.done;
 	 tr.dout     = vif1.dout;
 	 tr.rd_valid = vif1.rd_valid;
+//	 tr.wr_valid = vif1.wr_valid;
+
 	 
 /*byte unsigned data_q[$];
    byte unsigned data_array[];

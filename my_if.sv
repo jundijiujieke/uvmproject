@@ -21,7 +21,7 @@ logic [31:0] dout;
 logic done;
 logic progress;
 logic rd_valid;
-
+//logic wr_valid;
 endinterface
 
 `endif
