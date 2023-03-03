@@ -54,7 +54,7 @@ task my_driver::drive_one_pkt(my_transaction tr);
      vif.ram_en = tr.ram_en;
 	 vif.we = ((tr.we == RD) ? 0 : 1);
 	 vif.din = (((tr.we == WR)&&(tr.ram_en)) ? tr.din : 0 );
-//	 vif.din = ((tr.we == WR) ? 0 : tr.din );
+
 
 	 vif.addr = tr.addr;
 	 vif.start = tr.start;
@@ -68,11 +68,8 @@ task my_driver::drive_one_pkt(my_transaction tr);
 	 tr.progress = vif1.progress;
 	 tr.done = vif1.done;
 	 
-//	 @(posedge vif.clk);
-	if((tr.we == RD)&&(tr.ram_en))begin
-		tr.dout = vif1.dout; 
-	end        
-   
+	tr.dout = (((tr.we == RD)&&(tr.ram_en)) ? vif1.dout :0);
+    tr.rd_valid = vif1.rd_valid; 
 
  endtask
 

@@ -3,8 +3,9 @@
 class my_monitor extends uvm_monitor;
 
    virtual my_if vif;
+   virtual my_if vif1;
 
-   uvm_analysis_port #(my_transaction)  ap;
+   uvm_analysis_port #(my_transaction)  ap;//state a port
    
    `uvm_component_utils(my_monitor)
    function new(string name = "my_monitor", uvm_component parent = null);
@@ -15,7 +16,10 @@ class my_monitor extends uvm_monitor;
       super.build_phase(phase);
       if(!uvm_config_db#(virtual my_if)::get(this, "", "vif", vif))
          `uvm_fatal("my_monitor", "virtual interface must be set for vif!!!")
-      ap = new("ap", this);
+	  if(!uvm_config_db#(virtual my_if)::get(this, "", "vif1", vif1))
+         `uvm_fatal("my_monitor", "virtual interface must be set for vif1!!!")
+
+      ap = new("ap", this);//install this port
    endfunction
 
    extern task main_phase(uvm_phase phase);
@@ -27,18 +31,38 @@ task my_monitor::main_phase(uvm_phase phase);
    while(1) begin
       tr = new("tr");
       collect_one_pkt(tr);
-      ap.write(tr);
+      ap.write(tr);//port monitor writes the data to other component 
    end
 endtask
 
 task my_monitor::collect_one_pkt(my_transaction tr);
-   byte unsigned data_q[$];
+   
+  repeat(1) @(posedge vif.clk);
+     tr.ram_en = vif.ram_en;
+	 tr.we     = vif.we;//((tr.we == RD) ? 0 : 1);
+	 tr.din    = vif.din;//(((tr.we == WR)&&(tr.ram_en)) ? tr.din : 0 );
+
+	 tr.addr   = vif.addr;
+	 tr.start  = vif.start;
+	 tr.tabidx = vif.tabidx;
+	 tr.mode   = vif.mode;
+	 tr.es     = vif.es;
+	 tr.func   = vif.func;
+	 tr.auto   = vif.auto;   //0:manual 1: auto
+	 tr.bit_rev = vif.bit_rev;   //0 
+
+	 tr.progress = vif1.progress;
+	 tr.done     = vif1.done;
+	 tr.dout     = vif1.dout;
+	 tr.rd_valid = vif1.rd_valid;
+	 
+/*byte unsigned data_q[$];
    byte unsigned data_array[];
    logic [7:0] data;
    logic valid = 0;
-   int data_size;
+   int data_size;*/
    
-   while(1) begin
+   /*while(1) begin
       @(posedge vif.clk);
       if(vif.valid) break;
    end
@@ -55,7 +79,9 @@ task my_monitor::collect_one_pkt(my_transaction tr);
    end
    tr.pload = new[data_size - 18]; //da sa, e_type, crc
    data_size = tr.unpack_bytes(data_array) / 8; 
-   `uvm_info("my_monitor", "end collect one pkt", UVM_LOW);
+   `uvm_info("my_monitor", "end collect one pkt", UVM_LOW);*/
+
+
 endtask
 
 

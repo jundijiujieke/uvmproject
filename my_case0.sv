@@ -43,7 +43,7 @@ class case0_sequence extends uvm_sequence #(my_transaction);
 	  while(1)begin	
 	  	if(m_trans.progress == 1'b1)begin
 	  		`uvm_do_with(m_trans,{m_trans.ram_en == 1'b0;m_trans.start == 1'b0;})//wait for caluculation finished
-	  		m_trans.print();	
+//	  		m_trans.print();	
 	   end 
 	   else
 	  		break;
@@ -51,7 +51,11 @@ class case0_sequence extends uvm_sequence #(my_transaction);
 
 	  for(int i = 0;i < 1024;i = i + 1)begin
 	  	 `uvm_do_with(m_trans,{m_trans.addr == i;m_trans.we == RD;m_trans.ram_en == 1'b1;m_trans.start == 1'b0;})//read 1024 data from SRAM
-
+//		 m_trans.print();
+	  end
+	  
+	  repeat(3)begin
+	  	  `uvm_do_with(m_trans,{m_trans.ram_en == 1'b0;m_trans.start == 1'b0;})
 	  end
 
       end

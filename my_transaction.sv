@@ -22,6 +22,7 @@ rand func_op func;
 rand bit auto;   //0:manual 1: auto
 rand bit bit_rev;   //0 : ext_addr no rev, 1 : ext_addr bit rev,
 
+bit rd_valid;
 bit [31:0] dout; 
 bit done;
 bit progress;
@@ -48,6 +49,8 @@ constraint bit_rev_c{ bit_rev == 1'b0;}
 	  `uvm_field_int(dout, UVM_ALL_ON)
 	  `uvm_field_int(done, UVM_ALL_ON)
 	  `uvm_field_int(progress, UVM_ALL_ON)
+	  `uvm_field_int(rd_valid, UVM_ALL_ON)
+
    `uvm_object_utils_end
 
    function new(string name = "my_transaction");
