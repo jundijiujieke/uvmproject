@@ -4,7 +4,7 @@
 class my_model extends uvm_component;
    
    uvm_blocking_get_port #(my_transaction)  port;
-   uvm_analysis_port #(my_transaction)  ap;
+ //  uvm_analysis_port #(my_transaction)  ap;
 
    extern function new(string name, uvm_component parent);
    extern function void build_phase(uvm_phase phase);
@@ -20,7 +20,7 @@ endfunction
 function void my_model::build_phase(uvm_phase phase);
    super.build_phase(phase);
    port = new("port", this);
-   ap = new("ap", this);
+//   ap = new("ap", this);
 endfunction
 
 task my_model::main_phase(uvm_phase phase);
@@ -47,7 +47,7 @@ task my_model::main_phase(uvm_phase phase);
 
 	end
 
-       ap.write(tr);
+     //  ap.write(tr);
    end
 
 endtask

@@ -7,7 +7,7 @@ import uvm_pkg::*;//export UVM factory
 `include "my_sequencer.sv"
 `include "my_driver.sv"
 `include "my_monitor.sv"
-//`include "my_scoreboard.sv"`
+`include "my_scoreboard.sv"
 `include "my_model.sv"
 `include "my_agent.sv"
 `include "my_env.sv"
