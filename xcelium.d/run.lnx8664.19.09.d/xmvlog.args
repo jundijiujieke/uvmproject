@@ -15,11 +15,12 @@ UVM_PLI
 ././my_transaction.sv
 ././my_driver.sv
 ././my_monitor.sv
+././my_scoreboard.sv
 ././my_agent.sv
+././my_model.sv
 ././my_env.sv
 ././my_sequencer.sv
 ././base_test.sv
-././my_model.sv
 ./../../rtl/fft/ram256x32.v
 ./../../rtl/fft/r4r8_1st_pass_core.v
 ./../../rtl/fft/rom_twidTabOdd.v

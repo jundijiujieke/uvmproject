@@ -34,14 +34,14 @@ task my_model::main_phase(uvm_phase phase);
    while(1) begin
       port.get(tr);	  
  	if((tr.ram_en)&&(tr.we))begin//write input value into the data_in ram
-		if(cnt <= 1023)begin
+		if(cnt < `memsize)begin
 			data_in[cnt] = tr.din;
 			cnt = cnt + 1'd1;
 		end
 	end
 	
-	if(tr.start&(cnt == 1024))begin	//display the data_in ram
-		for(int i=0;i<1024;i=i+1)begin
+	if(tr.start&(cnt == `memsize))begin	//display the data_in ram
+		for(int i=0;i< `memsize;i=i+1)begin
 			//	$display("%0d input random value is %0h",i,data_in[i]);
 				new_tr = new("new_tr");
 				new_tr.din = data_in[i];

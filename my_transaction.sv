@@ -2,7 +2,7 @@
 `define MY_TRANSACTION__SV
 
 typedef enum{IMDCT, FFT}func_op;
-typedef enum{RAM512,RAM1024}tabidx_op;
+//typedef enum{RAM512,RAM1024}tabidx_op;
 typedef enum{RD, WR} op;
 
 class my_transaction extends uvm_sequence_item;
@@ -14,7 +14,7 @@ rand bit ram_en;
 rand bit [9:0] addr;
 rand bit start;
 //rand tabidx_op tabidx;
-rand tabidx_op tabidx;
+rand bit tabidx;
 rand bit mode;
 rand bit [4:0] es;
 //rand func_op func;   //0: IMDCT, 1: FFT
@@ -28,7 +28,7 @@ bit [31:0] dout;
 bit done;
 bit progress;
 
-constraint tabidx_c{ tabidx == RAM1024;}
+constraint tabidx_c{ tabidx == `tab;}
 constraint mode_c{ mode == 1'b0;}
 constraint es_c{ es == 5'd2;}
 constraint func_c{ func == IMDCT;}
@@ -41,7 +41,8 @@ constraint bit_rev_c{ bit_rev == 1'b0;}
 	  `uvm_field_int(ram_en, UVM_ALL_ON)
    	  `uvm_field_int(addr, UVM_ALL_ON)
 	  `uvm_field_int(start, UVM_ALL_ON)
-	  `uvm_field_enum(tabidx_op,tabidx, UVM_ALL_ON)
+//	  `uvm_field_enum(tabidx_op,tabidx, UVM_ALL_ON)
+	  `uvm_field_int(tabidx, UVM_ALL_ON)
 	  `uvm_field_int(mode, UVM_ALL_ON)
 	  `uvm_field_int(es, UVM_ALL_ON)
 	  `uvm_field_enum(func_op,func, UVM_ALL_ON)

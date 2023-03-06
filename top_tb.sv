@@ -1,5 +1,7 @@
 `timescale 1ns/1ps
 `include "uvm_macros.svh"
+`define memsize 128
+`define tab 0
 
 import uvm_pkg::*;//export UVM factory
 `include "my_if.sv"
@@ -13,6 +15,7 @@ import uvm_pkg::*;//export UVM factory
 `include "my_env.sv"
 `include "base_test.sv"
 `include "my_case0.sv"
+
 
 module top_tb;
 
@@ -84,15 +87,6 @@ always@(posedge clk or negedge rst_n)begin
 		output_if.rd_valid <= ((input_if.ram_en)&(!input_if.we));
 	end
 end
-/*
-always@(posedge clk or negedge rst_n)begin
-	if(!rst_n)begin
-	   output_if.wr_valid <= 1'b0;
-	end
-	else begin
-		output_if.wr_valid <= ((input_if.ram_en)&(input_if.we));
-	end
-end*/
 
 
 initial begin
@@ -104,11 +98,6 @@ initial begin
 	uvm_config_db#(virtual my_if)::set(null, "uvm_test_top.env.i_agt.drv", "vif1", output_if);
 	uvm_config_db#(virtual my_if)::set(null, "uvm_test_top", "vif", output_if);
 	uvm_config_db#(virtual my_if)::set(null, "uvm_test_top.env.i_agt.aqr.case0_sequence", "vif1", output_if);
-//	uvm_config_db#(wire)::set(null, "uvm_test_top.env.i_agt.aqr.case0_sequence", "progress", progress);
-
-//	uvm_config_db#(wire)::set(null,"uvm_test_top.", "progress", progress);
-//    uvm_config_db#(virtual my_if)::set(uvm_root::get(), "uvm_test_top.env.i_agt.drv", "vif", input_if);
-//	uvm_config_db#(virtual my_if)::set(uvm_root::get(), "uvm_test_top.env.i_agt.drv", "vif1", output_if);
 
     uvm_config_db#(virtual my_if)::set(null, "uvm_test_top.env.i_agt.mon", "vif", input_if);
     uvm_config_db#(virtual my_if)::set(null, "uvm_test_top.env.i_agt.mon", "vif1", output_if);

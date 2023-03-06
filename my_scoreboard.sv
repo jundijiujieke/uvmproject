@@ -55,8 +55,8 @@ task my_scoreboard::main_phase(uvm_phase phase);
 			end
 			else begin
 				`uvm_error("my_scoreboard","received from DUT while expect queue is empty");
-			//	$display("the expected pkt is");
-			//	actual_tr.print();
+				$display("the expected pkt is");
+				actual_tr.print();
 			end
 		end
 	

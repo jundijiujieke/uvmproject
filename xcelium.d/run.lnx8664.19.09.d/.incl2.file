@@ -34,6 +34,8 @@ my_driver.sv
 /sspsrv01/RISC-V/work/haohaoyang/IMDCT/IMDCT_test/sim_uvm/sim_monitor/my_driver.sv
 my_monitor.sv
 /sspsrv01/RISC-V/work/haohaoyang/IMDCT/IMDCT_test/sim_uvm/sim_monitor/my_monitor.sv
+my_scoreboard.sv
+/sspsrv01/RISC-V/work/haohaoyang/IMDCT/IMDCT_test/sim_uvm/sim_monitor/my_scoreboard.sv
 my_model.sv
 /sspsrv01/RISC-V/work/haohaoyang/IMDCT/IMDCT_test/sim_uvm/sim_monitor/my_model.sv
 my_agent.sv

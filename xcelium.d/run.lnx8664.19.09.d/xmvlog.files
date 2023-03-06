@@ -8,11 +8,12 @@
 /sspsrv01/RISC-V/work/haohaoyang/IMDCT/IMDCT_test/sim_uvm/sim_monitor/my_transaction.sv
 /sspsrv01/RISC-V/work/haohaoyang/IMDCT/IMDCT_test/sim_uvm/sim_monitor/my_driver.sv
 /sspsrv01/RISC-V/work/haohaoyang/IMDCT/IMDCT_test/sim_uvm/sim_monitor/my_monitor.sv
+/sspsrv01/RISC-V/work/haohaoyang/IMDCT/IMDCT_test/sim_uvm/sim_monitor/my_scoreboard.sv
 /sspsrv01/RISC-V/work/haohaoyang/IMDCT/IMDCT_test/sim_uvm/sim_monitor/my_agent.sv
+/sspsrv01/RISC-V/work/haohaoyang/IMDCT/IMDCT_test/sim_uvm/sim_monitor/my_model.sv
 /sspsrv01/RISC-V/work/haohaoyang/IMDCT/IMDCT_test/sim_uvm/sim_monitor/my_env.sv
 /sspsrv01/RISC-V/work/haohaoyang/IMDCT/IMDCT_test/sim_uvm/sim_monitor/my_sequencer.sv
 /sspsrv01/RISC-V/work/haohaoyang/IMDCT/IMDCT_test/sim_uvm/sim_monitor/base_test.sv
-/sspsrv01/RISC-V/work/haohaoyang/IMDCT/IMDCT_test/sim_uvm/sim_monitor/my_model.sv
 /sspsrv01/RISC-V/work/haohaoyang/IMDCT/IMDCT_test/rtl/fft/ram256x32.v
 /sspsrv01/RISC-V/work/haohaoyang/IMDCT/IMDCT_test/rtl/fft/r4r8_1st_pass_core.v
 /sspsrv01/RISC-V/work/haohaoyang/IMDCT/IMDCT_test/rtl/fft/rom_twidTabOdd.v
