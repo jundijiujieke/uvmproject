@@ -47,32 +47,15 @@ task my_model::main_phase(uvm_phase phase);
 	if(tr.start&(cnt == `memsize))begin	//display the data_in ram
 		dct4_1024_c(data_in,data_out);
 		for(int i=0;i< `memsize;i=i+1)begin
-			//	$display("%0d input random value is %0h",i,data_in[i]);
 				new_tr = new("new_tr");
 				new_tr.dout = data_out[i];
 				ap.write(new_tr);
-				$display("%0d input random value is %0h",i,new_tr.dout);
-			end
+		end
 
 	end
 
-     //  ap.write(tr);
    end
 
 endtask
 `endif
-/*
-task my_model::main_phase(uvm_phase phase);
-   my_transaction tr;
-   my_transaction new_tr;
-   super.main_phase(phase);
-   while(1) begin
-      port.get(tr);
-      new_tr = new("new_tr");
-      new_tr.copy(tr);
-      `uvm_info("my_model", "get one transaction, copy and print it:", UVM_LOW)
-      new_tr.print();
-      ap.write(new_tr);
-   end
-endtask
-*/
+
