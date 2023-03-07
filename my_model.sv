@@ -1,5 +1,6 @@
 `ifndef MY_MODEL__SV
 `define MY_MODEL__SV
+ import "DPI-C" function void dct4_1024_c(input bit[31:0]data[`memsize-1:0] ,output bit[31:0]result[`memsize-1:0] ); 
 
 class my_model extends uvm_component;
    
@@ -25,9 +26,12 @@ endfunction
 
 task my_model::main_phase(uvm_phase phase);
    my_transaction tr;
+
    my_transaction new_tr;
- 
-   reg [31:0] data_in [1023:0];
+  
+   reg [31:0] data_in [`memsize-1:0];
+   reg [31:0] data_out [`memsize-1:0];
+
    int  cnt = 0;
    super.main_phase(phase);
 
@@ -41,12 +45,13 @@ task my_model::main_phase(uvm_phase phase);
 	end
 	
 	if(tr.start&(cnt == `memsize))begin	//display the data_in ram
+		dct4_1024_c(data_in,data_out);
 		for(int i=0;i< `memsize;i=i+1)begin
 			//	$display("%0d input random value is %0h",i,data_in[i]);
 				new_tr = new("new_tr");
-				new_tr.din = data_in[i];
+				new_tr.dout = data_out[i];
 				ap.write(new_tr);
-				$display("%0d input random value is %0h",i,new_tr.din);
+				$display("%0d input random value is %0h",i,new_tr.dout);
 			end
 
 	end

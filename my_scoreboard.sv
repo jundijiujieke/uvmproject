@@ -33,7 +33,7 @@ task my_scoreboard::main_phase(uvm_phase phase);
    fork
    while(1) begin
    		exp_port.get(expect_tr);
-		$display("%h", expect_tr.din);
+		$display("%h", expect_tr.dout);
 		expect_queue.push_back(expect_tr);
    end
    while(1) begin
@@ -44,12 +44,14 @@ task my_scoreboard::main_phase(uvm_phase phase);
 			i = i + 1'd1;
 			if(expect_queue.size() > 0)begin
 				temp_tr = expect_queue.pop_front();
-				$display("%h %h", temp_tr.din, actual_tr.dout);
+				$display("%h %h", temp_tr.dout, actual_tr.dout);
 				result = (temp_tr.dout == actual_tr.dout) ? 1 : 0;
 				if(result)begin
+				$display("%d", i-1);
 					`uvm_info("my_scoreboard","compare sucessfully",UVM_LOW);
 				end
 				else begin
+				$display("%d",i-1);
 					`uvm_error("my_scoreboard","compare failed")
 				end
 			end

@@ -32,17 +32,19 @@ class case0_sequence extends uvm_sequence #(my_transaction);
       repeat (1) begin
 
 	  for(int i = 0; i < `memsize; i = i + 1)begin
-         `uvm_do_with(m_trans,{m_trans.addr == i;m_trans.we == WR;m_trans.ram_en == 1'b1;m_trans.start == 1'b0;})//write 1024 data into SRAM
+        // `uvm_do_with(m_trans,{m_trans.din == i;m_trans.addr == i;m_trans.we == WR;m_trans.ram_en == 1'b1;m_trans.start == 1'b0;})//write 1024 data into SRAM
+			 `uvm_do_with(m_trans,{m_trans.addr == i;m_trans.we == WR;m_trans.ram_en == 1'b1;m_trans.start == 1'b0;})//write 1024 data into SRAM
+
 	  end
 
-	  `uvm_do_with(m_trans,{m_trans.ram_en == 1'b0;m_trans.start == 1'b1;})
-	  `uvm_do_with(m_trans,{m_trans.ram_en == 1'b0;m_trans.start == 1'b0;})
-	  `uvm_do_with(m_trans,{m_trans.ram_en == 1'b0;m_trans.start == 1'b0;})
+	  `uvm_do_with(m_trans,{m_trans.ram_en == 1'b0;m_trans.we == RD;m_trans.addr == 32'd0;m_trans.start == 1'b1;})
+	  `uvm_do_with(m_trans,{m_trans.ram_en == 1'b0;m_trans.we == RD;m_trans.addr == 32'd0;m_trans.start == 1'b0;})
+	  `uvm_do_with(m_trans,{m_trans.ram_en == 1'b0;m_trans.we == RD;m_trans.addr == 32'd0;m_trans.start == 1'b0;})
 
       
 	  while(1)begin	
 	  	if(m_trans.progress == 1'b1)begin
-	  		`uvm_do_with(m_trans,{m_trans.ram_en == 1'b0;m_trans.start == 1'b0;})//wait for caluculation finished
+	  		`uvm_do_with(m_trans,{m_trans.ram_en == 1'b0;m_trans.we == RD;m_trans.addr == 32'd0;m_trans.start == 1'b0;})//wait for caluculation finished
 //	  		m_trans.print();	
 	   end 
 	   else
@@ -55,7 +57,7 @@ class case0_sequence extends uvm_sequence #(my_transaction);
 	  end
 	  
 	  repeat(3)begin
-	  	  `uvm_do_with(m_trans,{m_trans.ram_en == 1'b0;m_trans.start == 1'b0;})
+	  	  `uvm_do_with(m_trans,{m_trans.ram_en == 1'b0;m_trans.ram_en == 1'b0;m_trans.start == 1'b0;})
 	  end
 
       end

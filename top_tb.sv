@@ -1,8 +1,17 @@
 `timescale 1ns/1ps
 `include "uvm_macros.svh"
-`define memsize 128
-`define tab 0
 
+`ifdef SIZE1
+`define tab 1
+`define memsize 1024
+//$display("memory size is 1024");
+`elsif SIZE0
+`define tab 0
+`define memsize 128
+//$display("memory size is 128");
+`endif
+
+//1.memsize sets 128 tab sets 0  2.memsize sets 1024 tab sets 1
 import uvm_pkg::*;//export UVM factory
 `include "my_if.sv"
 `include "my_transaction.sv"
