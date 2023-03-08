@@ -8,7 +8,7 @@
 +access+r
 +xmlicq
 +sv
-+define+SIZE1
++define+SIZE0
 +libext+.v
 -loadpli
 /edatools/cadence/XCELIUM-19.09.010/tools/methodology/UVM/CDNS-1.1d/additions/sv/lib/64bit/libuvmpli.so:uvm_pli_boot
@@ -18,6 +18,10 @@
 +r
 -LICQUEUE
 -DISABLE_SEM2009
+-COVERAGE
+B
+-COVDUT
+imdct_fft_with_ram256
 -MESSAGES
 -XLMODE
 ./xcelium.d/run.lnx8664.19.09.d

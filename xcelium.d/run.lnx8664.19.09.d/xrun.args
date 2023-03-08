@@ -10,8 +10,8 @@
 +xmlicq
 +sv
 -seed
-2121
-+define+SIZE1
+121
++define+SIZE0
 -vlog_ext
 +.vh
 -disable_sem2009
@@ -21,4 +21,13 @@ filelist.f
 /edatools/xilinx/Vivado/2020.1/data/verilog/src/unisims
 +libext+.v
 -sv_lib
-libdpi_c_ex_1024.so
+libdpi_c_ex.so
+-input
+uvm.cmd
+-covoverwrite
+-coverage
+B
+-covdut
+imdct_fft_with_ram256
+-covtest
+test_cov_appo/

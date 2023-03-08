@@ -1,8 +1,8 @@
 `ifndef MY_MODEL__SV
 `define MY_MODEL__SV
 
-import "DPI-C" function void dct4_1024_c(input bit[31:0]data[`memsize-1:0] ,output bit[31:0]result[`memsize-1:0] ); 
-//import "DPI-C" function void DCT4_SV(input bit[31:0]d1[`memsize-1:0] ,output bit[31:0]d2[`memsize-1:0], input int  ms,input int tabidx);
+//import "DPI-C" function void dct4_1024_c(input bit[31:0]data[`memsize-1:0] ,output bit[31:0]result[`memsize-1:0] ); 
+import "DPI-C" function void DCT4_SV(input bit[31:0]d1[`memsize-1:0] ,output bit[31:0]d2[`memsize-1:0], input int  ms,input int tabidx);
 
 class my_model extends uvm_component;
    
@@ -47,8 +47,8 @@ task my_model::main_phase(uvm_phase phase);
 	end
 	
 	if(tr.start&(cnt == `memsize))begin	//display the data_in ram
-		dct4_1024_c(data_in,data_out);
-//		DCT4_SV(data_in,data_out,`memsize, `tab);
+//		dct4_1024_c(data_in,data_out);
+		DCT4_SV(data_in,data_out,`memsize, `tab);
 		for(int i=0;i< `memsize;i=i+1)begin
 				new_tr = new("new_tr");
 				new_tr.dout = data_out[i];
