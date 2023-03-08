@@ -18,10 +18,6 @@
 +r
 -LICQUEUE
 -DISABLE_SEM2009
--COVERAGE
-B
--COVDUT
-imdct_fft_with_ram256
 -MESSAGES
 -XLMODE
 ./xcelium.d/run.lnx8664.19.09.d

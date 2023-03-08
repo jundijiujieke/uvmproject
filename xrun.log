@@ -1,5 +1,5 @@
 xrun(64): 19.09-s010: (c) Copyright 1995-2020 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	19.09-s010: Started on Mar 08, 2023 at 10:39:08 HKT
+TOOL:	xrun(64)	19.09-s010: Started on Mar 08, 2023 at 14:36:20 HKT
 xrun
 	-uvm
 	+libtext_.v
@@ -8,7 +8,7 @@ xrun
 	+access+r
 	+xmlicq
 	+sv
-	-seed 213123
+	-seed 2121
 	+define+SIZE1
 	-vlog_ext +.vh
 	-disable_sem2009
@@ -45,25 +45,130 @@ xrun
 	-y /edatools/xilinx/Vivado/2020.1/data/verilog/src/unisims
 	+libext+.v
 	-sv_lib libdpi_c_ex_1024.so
-	-input uvm.cmd
-	-covoverwrite
-	-coverage B
-	-covdut imdct_fft_with_ram256
-	-covtest test_cov_appo
 
    User defined plus("+") options:
 	+libtext_.v
 
+Recompiling... reason: file './my_model.sv' is newer than expected.
+	expected: Wed Mar  8 14:33:54 2023
+	actual:   Wed Mar  8 14:36:14 2023
+Compiling UVM packages (uvm_pkg.sv cdns_uvm_pkg.sv) using uvmhome location /edatools/cadence/XCELIUM-19.09.010/tools/methodology/UVM/CDNS-1.1d
+file: ././my_model.sv
+file: ./../rtl/IMDCT/imdct_fft_with_ram256.v
+xmvlog: *W,LIBNOU: Library "/edatools/xilinx/Vivado/2020.1/data/verilog/src/unisims" given but not used.
+	Total errors/warnings found outside modules and primitives:
+		errors: 0, warnings: 1
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+	Top level design units:
+		uvm_pkg
+		cdns_uvmapi
+		cdns_assert2uvm_pkg
+		cdns_uvm_pkg
+		$unit_0x7491a3e4
+		top_tb
+		imdct_with_ram
+	 tr.we     = vif.we;//((tr.we == RD) ? 0 : 1);
+	               |
+xmelab: *W,ENUMERR (./my_monitor.sv,42|16): This assignment is a violation of SystemVerilog strong typing rules for enumeration datatypes.
+	 tr.func   = vif.func;
+	               |
+xmelab: *W,ENUMERR (./my_monitor.sv,50|16): This assignment is a violation of SystemVerilog strong typing rules for enumeration datatypes.
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+		worklib.imdct_rom257x64:v <0x05bcf032>
+			streams:   3, words: 14132
+		worklib.imdct_rom576x64:v <0x174b1aa5>
+			streams:   3, words: 31497
+		worklib.ram512x32:v <0x27134519>
+			streams:   4, words:  1242
+		worklib.imdct_with_ram:v <0x3d928955>
+			streams:  15, words:  4192
+		worklib.rom_rev35:v <0x591d0217>
+			streams:   3, words:  2265
+		worklib.rom_rev240:v <0x13ff2d1d>
+			streams:   3, words:  9380
+		worklib.rom_twidTabOdd:v <0x3402fbbd>
+			streams:   3, words: 33340
+		worklib.rom_twidTabEven:v <0x017caea3>
+			streams:   3, words: 15592
+		worklib.r4r8_1st_pass_core:v <0x7c03b826>
+			streams: 118, words: 77978
+		worklib.imdct_rom257x64:v <0x2c4bba73>
+			streams:   3, words: 14132
+		worklib.imdct_rom576x64:v <0x3ebc50e4>
+			streams:   3, words: 31497
+		worklib.imdct_state:v <0x57fdda5f>
+			streams:  12, words:  4681
+		worklib.barrel_shifter32_left:v <0x75e0bcb5>
+			streams:   1, words:  1351
+		worklib.mul_shift32:v <0x20142b29>
+			streams:   3, words:   699
+		worklib.barrel_shifter32_right:v <0x094f87ce>
+			streams:   1, words:  2931
+		worklib.imdct_alu:v <0x6bcce83f>
+			streams:  26, words:  7565
+		worklib.imdct:v <0x5da4cf0c>
+			streams:  11, words:  3591
+		worklib.ram256x32:v <0x1e2b3a99>
+			streams:   4, words:  1242
+		worklib.imdct_fft_with_ram256:v <0x6641893c>
+			streams:  69, words: 25853
+		worklib.uvm_pkg:sv <0x4c14767e>
+			streams:  20, words: 12868
+		worklib.\$unit_0x7491a3e4 :compilation_unit <0x6ad14c21>
+			streams:  21, words: 14613
+		worklib.uvm_pkg:sv <0x4bc25161>
+			streams:  38, words: 31769
+		worklib.uvm_pkg:sv <0x073e51bc>
+			streams:  22, words: 19781
+		worklib.uvm_pkg:sv <0x09fb2569>
+			streams:  45, words: 48984
+		worklib.uvm_pkg:sv <0x2ca26185>
+			streams:  23, words: 27024
+		worklib.uvm_pkg:sv <0x724cedda>
+			streams:  22, words: 28928
+		worklib.uvm_pkg:sv <0x499e6e3e>
+			streams:  31, words: 43651
+		worklib.uvm_pkg:sv <0x109118ba>
+			streams:  31, words: 61299
+		worklib.uvm_pkg:sv <0x41d1e46b>
+			streams: 258, words: 307877
+		worklib.uvm_pkg:sv <0x05fcfb2a>
+			streams:  22, words: 69616
+		worklib.top_tb:sv <0x75f5b6a8>
+			streams:  77, words: 88006
+		worklib.\$unit_0x7491a3e4 :compilation_unit <0x2a8871ca>
+			streams:   0, words:     0
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		                       Instances  Unique
+		Modules:                      46      18
+		Interfaces:                    2       1
+		Verilog packages:              4       4
+		Registers:                 14261   10376
+		Scalar wires:                 76       -
+		Expanded wires:               18       2
+		Vectored wires:              224       -
+		Named events:                  4      12
+		Always blocks:                87      41
+		Initial blocks:              300     165
+		Parallel blocks:              27      28
+		Cont. assignments:           141     151
+		Pseudo assignments:           26      23
+		Assertions:                    2       2
+		Compilation units:             1       1
+		SV Class declarations:       202     314
+		SV Class specializations:    387     387
+		Simulation timescale:        1ps
+	Writing initial simulation snapshot: worklib.top_tb:sv
 Loading snapshot worklib.top_tb:sv .................... Done
 xmsim: *W,XCLGNOPTM: The SystemVerilog constraint solver Xceligen options 'seed_only_rand and process_alternate_rng and ignore_worklib_name' are not specified and will default to 0. The recommended value for each of them is 1 which will become the default in a future release.
-SVSEED set from command line: 213123
+SVSEED set from command line: 2121
 xmsim: *W,RNDXCELON: Xceligen, the new SystemVerilog constraint solver is used. Disabling Xceligen and using the legacy constraint solver is possible with "xrun/xmsim -xceligen on=0 ...".
 xcelium> source /edatools/cadence/XCELIUM-19.09.010/tools/xcelium/files/xmsimrc
 xcelium> source /edatools/cadence/XCELIUM-19.09.010/tools/methodology/UVM/CDNS-1.1d/additions/sv/files/tcl/uvm_sim.tcl
-xcelium> database -open -shm uvm
-Created SHM database uvm
-xcelium> probe -create -database uvm -shm -memories -all -depth all top_tb
-Created probe 1
 xcelium> run
 ----------------------------------------------------------------
 CDNS-UVM-1.1d (19.09-s010)
@@ -87,58 +192,58 @@ CDNS-UVM-1.1d (19.09-s010)
 
 UVM_INFO @ 0: reporter [RNTST] Running test my_case0...
 UVM_INFO @ 0: reporter [UVMTOP] UVM testbench topology:
-uvm_test_top: (my_case0@2671) {
-  env: (my_env@2789) {
-    agt_mdl_fifo: (uvm_tlm_analysis_fifo #(T)@3230) {
-      analysis_export: (uvm_analysis_imp@3471) @3471 
-      get_ap: (uvm_analysis_port@3422) @3422 
-      get_peek_export: (uvm_get_peek_imp@3326) @3326 
-      put_ap: (uvm_analysis_port@3374) @3374 
-      put_export: (uvm_put_imp@3278) @3278 
+uvm_test_top: (my_case0@2662) {
+  env: (my_env@2780) {
+    agt_mdl_fifo: (uvm_tlm_analysis_fifo #(T)@3221) {
+      analysis_export: (uvm_analysis_imp@3462) @3462 
+      get_ap: (uvm_analysis_port@3413) @3413 
+      get_peek_export: (uvm_get_peek_imp@3317) @3317 
+      put_ap: (uvm_analysis_port@3365) @3365 
+      put_export: (uvm_put_imp@3269) @3269 
     }
-    agt_scb_fifo: (uvm_tlm_analysis_fifo #(T)@2891) {
-      analysis_export: (uvm_analysis_imp@3200) @3200 
-      get_ap: (uvm_analysis_port@3150) @3150 
-      get_peek_export: (uvm_get_peek_imp@3052) @3052 
-      put_ap: (uvm_analysis_port@3101) @3101 
-      put_export: (uvm_put_imp@3001) @3001 
+    agt_scb_fifo: (uvm_tlm_analysis_fifo #(T)@2882) {
+      analysis_export: (uvm_analysis_imp@3191) @3191 
+      get_ap: (uvm_analysis_port@3141) @3141 
+      get_peek_export: (uvm_get_peek_imp@3043) @3043 
+      put_ap: (uvm_analysis_port@3092) @3092 
+      put_export: (uvm_put_imp@2992) @2992 
     }
-    i_agt: (my_agent@2832) {
-      drv: (my_driver@4420) {
-        rsp_port: (uvm_analysis_port@4519) @4519 
-        seq_item_port: (uvm_seq_item_pull_port@4470) @4470 
+    i_agt: (my_agent@2823) {
+      drv: (my_driver@4411) {
+        rsp_port: (uvm_analysis_port@4510) @4510 
+        seq_item_port: (uvm_seq_item_pull_port@4461) @4461 
       }
-      mon: (my_monitor@4499) {
-        ap: (uvm_analysis_port@4605) @4605 
+      mon: (my_monitor@4490) {
+        ap: (uvm_analysis_port@4596) @4596 
       }
-      sqr: (my_sequencer@3787) {
-        rsp_export: (uvm_analysis_export@3845) @3845 
-        seq_item_export: (uvm_seq_item_pull_imp@4389) @4389 
+      sqr: (my_sequencer@3778) {
+        rsp_export: (uvm_analysis_export@3836) @3836 
+        seq_item_export: (uvm_seq_item_pull_imp@4380) @4380 
         arbitration_queue: - 
         lock_queue: - 
         num_last_reqs: 'd1 
         num_last_rsps: 'd1 
       }
     }
-    mdl: (my_model@2892) {
-      ap: (uvm_analysis_port@4724) @4724 
-      port: (uvm_blocking_get_port@4675) @4675 
+    mdl: (my_model@2883) {
+      ap: (uvm_analysis_port@4715) @4715 
+      port: (uvm_blocking_get_port@4666) @4666 
     }
-    mdl_scb_fifo: (uvm_tlm_analysis_fifo #(T)@3501) {
-      analysis_export: (uvm_analysis_imp@3742) @3742 
-      get_ap: (uvm_analysis_port@3693) @3693 
-      get_peek_export: (uvm_get_peek_imp@3597) @3597 
-      put_ap: (uvm_analysis_port@3645) @3645 
-      put_export: (uvm_put_imp@3549) @3549 
+    mdl_scb_fifo: (uvm_tlm_analysis_fifo #(T)@3492) {
+      analysis_export: (uvm_analysis_imp@3733) @3733 
+      get_ap: (uvm_analysis_port@3684) @3684 
+      get_peek_export: (uvm_get_peek_imp@3588) @3588 
+      put_ap: (uvm_analysis_port@3636) @3636 
+      put_export: (uvm_put_imp@3540) @3540 
     }
-    o_agt: (my_agent@2862) {
-      mon: (my_monitor@4761) {
-        ap: (uvm_analysis_port@4811) @4811 
+    o_agt: (my_agent@2853) {
+      mon: (my_monitor@4752) {
+        ap: (uvm_analysis_port@4802) @4802 
       }
     }
-    scb: (my_scoreboard@2922) {
-      act_port: (uvm_blocking_get_port@4911) @4911 
-      exp_port: (uvm_blocking_get_port@4862) @4862 
+    scb: (my_scoreboard@2913) {
+      act_port: (uvm_blocking_get_port@4902) @4902 
+      exp_port: (uvm_blocking_get_port@4853) @4853 
     }
   }
 }
@@ -1193,16 +1298,5 @@ UVM_FATAL :    0
 [my_scoreboard]  1024
 Simulation complete via $finish(1) at time 1895600 NS + 85
 /edatools/cadence/XCELIUM-19.09.010/tools/methodology/UVM/CDNS-1.1d/sv/src/base/uvm_root.svh:457     $finish;
-xcelium> 
 xcelium> exit
-
-coverage setup:
-  workdir  :  ./cov_work
-  dutinst  :  top_tb.imdct_fft_with_ram256_inst(imdct_fft_with_ram256)
-  scope    :  scope
-  testname :  test_cov_appo
-
-coverage files:
-  model(design data) :  ./cov_work/scope/icc_47da2a22_00000000.ucm (reused)
-  data               :  ./cov_work/scope/test_cov_appo/icc_47da2a22_00000000.ucd
-TOOL:	xrun(64)	19.09-s010: Exiting on Mar 08, 2023 at 10:39:09 HKT  (total: 00:00:01)
+TOOL:	xrun(64)	19.09-s010: Exiting on Mar 08, 2023 at 14:36:23 HKT  (total: 00:00:03)

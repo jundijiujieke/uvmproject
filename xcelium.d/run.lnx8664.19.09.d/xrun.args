@@ -10,7 +10,7 @@
 +xmlicq
 +sv
 -seed
-213123
+2121
 +define+SIZE1
 -vlog_ext
 +.vh
@@ -22,12 +22,3 @@ filelist.f
 +libext+.v
 -sv_lib
 libdpi_c_ex_1024.so
--input
-uvm.cmd
--covoverwrite
--coverage
-B
--covdut
-imdct_fft_with_ram256
--covtest
-test_cov_appo
