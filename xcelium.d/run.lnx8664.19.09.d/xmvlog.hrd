@@ -5,6 +5,8 @@
 -YDIR
 /edatools/xilinx/Vivado/2020.1/data/verilog/src/unisims
 -sv
+-DEFINE
+SIZE1
 -LIBEXT
 .v
 -I_INCDIR

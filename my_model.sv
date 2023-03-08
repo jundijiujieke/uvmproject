@@ -1,6 +1,7 @@
 `ifndef MY_MODEL__SV
 `define MY_MODEL__SV
- import "DPI-C" function void dct4_1024_c(input bit[31:0]data[`memsize-1:0] ,output bit[31:0]result[`memsize-1:0] ); 
+
+import "DPI-C" function void dct4_1024_c(input bit[31:0]data[`memsize-1:0] ,output bit[31:0]result[`memsize-1:0] ); 
 
 class my_model extends uvm_component;
    

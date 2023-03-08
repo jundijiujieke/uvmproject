@@ -4,6 +4,8 @@
 //
 -RUNMODE
 -sv
+-DEFINE
+SIZE1
 -I_INCDIR
 /edatools/cadence/XCELIUM-19.09.010/tools/methodology/UVM/CDNS-1.1d/sv/src
 -DEFINE
