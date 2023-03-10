@@ -1,0 +1,33 @@
+//
+// File created by:  xrun
+// Do not modify this file
+//
+-uvm
++libtext_.v
++xm64bit
++xmtimescale+1ns/10ps
++access+r
++xmlicq
++sv
+-seed
+n
++define+SIZE1
+-vlog_ext
++.vh
+-disable_sem2009
+-F
+filelist.f
+-y
+/edatools/xilinx/Vivado/2020.1/data/verilog/src/unisims
++libext+.v
+-sv_lib
+libdpi.so
+-input
+uvm.cmd
+-covoverwrite
+-coverage
+B
+-covdut
+imdct_fft_with_ram256
+-covtest
+test_cov_appo2/

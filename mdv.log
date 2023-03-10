@@ -1,9 +1,0 @@
-[INFO ] 2023-03-09 09:41:25,650 [com.cadence.mdv.imc.Main] [main] - Binding debug tools http on port: 46784
-[INFO ] 2023-03-09 09:46:03,445 [com.cadence.mdv.imc.Main] [main] - Binding debug tools http on port: 40128
-[INFO ] 2023-03-09 09:48:47,569 [com.cadence.mdv.imc.Main] [main] - Binding debug tools http on port: 43019
-[INFO ] 2023-03-09 14:36:11,141 [com.cadence.mdv.imc.Main] [main] - Binding debug tools http on port: 46399
-[ERROR] 2023-03-09 14:36:42,702 [com.cadence.mdv.messaging.MDVASynchronicMessaging] [frontend-pool-1] - invalid command name "q".
-[INFO ] 2023-03-09 14:44:46,816 [com.cadence.mdv.imc.Main] [main] - Binding debug tools http on port: 44078
-[INFO ] 2023-03-09 14:52:04,665 [com.cadence.mdv.imc.Main] [main] - Binding debug tools http on port: 46030
-[INFO ] 2023-03-09 16:08:00,102 [com.cadence.mdv.imc.Main] [main] - Binding debug tools http on port: 44156
-[INFO ] 2023-03-09 16:12:32,114 [com.cadence.mdv.imc.Main] [main] - Binding debug tools http on port: 36004

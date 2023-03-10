@@ -1,0 +1,13 @@
+//
+// File created by:  xrun
+// Do not modify this file
+//
++NoArgsToLog
+-64bit
+-LICQUEUE
+-COVOVERWRITE
+-COVERAGE
+B
+-COVTEST
+test_cov_appo2/
+-UPDATE
