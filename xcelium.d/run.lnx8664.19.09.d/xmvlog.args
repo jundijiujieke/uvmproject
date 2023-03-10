@@ -10,7 +10,7 @@
 UVM_PLI
 -sv
 -DEFINE
-SIZE0
+SIZE1
 ././top_tb.sv
 ././my_case0.sv
 ././my_if.sv
