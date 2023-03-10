@@ -1,5 +1,0 @@
-gcc *.c -Wall -m64 -fPIC -shared -o libdpi.so
-xrun -uvm +libtext_.v +xm64bit +xmtimescale+1ns/10ps +access+r +xmlicq +sv  -vlog_ext +.vh -disable_sem2009 \
-test.sv  
-
- 
