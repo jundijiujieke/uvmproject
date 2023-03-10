@@ -1,0 +1,12 @@
+/edatools/cadence/XCELIUM-19.09.010/tools.lnx86/inca/bin/64bit/xmsim
+Obtained 10 stack frames.
+/edatools/cadence/XCELIUM-19.09.010/tools.lnx86/inca/bin/64bit/../../../lib/64bit/libcbreakpad.so(_Z13use_backtracev+0x9d) [0x7f2eedd4eae9]
+/edatools/cadence/XCELIUM-19.09.010/tools.lnx86/inca/bin/64bit/../../../lib/64bit/libcbreakpad.so(cbpad_generate_dump_on_demand+0x66) [0x7f2eedd4ee3c]
+xmsim() [0x153098c]
+xmsim(serror+0x95) [0x1530d85]
+xmsim() [0x99ce73]
+/lib64/libpthread.so.0(+0xf630) [0x7f2eeee03630]
+./libdpi_c_ex.so(+0x14a1) [0x7f2ee5ca54a1]
+./libdpi_c_ex.so(raac_DCT4+0x37) [0x7f2ee5ca5977]
+./libdpi_c_ex.so(DCT4_SV+0x12c) [0x7f2ee5ca5b00]
+[0x5a25d73]

@@ -4,3 +4,10 @@ imc: *I,RUNLD: Successfully loaded run /sspsrv01/RISC-V/work/haohaoyang/IMDCT/IM
 imc: *I,RUNLD: Successfully loaded run /sspsrv01/RISC-V/work/haohaoyang/IMDCT/IMDCT_test/sim_uvm/uvm/cov_work/scope/test_cov_appo1.
 imc: *I,RUNLD: Successfully loaded run /sspsrv01/RISC-V/work/haohaoyang/IMDCT/IMDCT_test/sim_uvm/uvm/cov_work/scope/test_cov_appo2.
 imc: *I,RUNLD: Successfully loaded run /sspsrv01/RISC-V/work/haohaoyang/IMDCT/IMDCT_test/sim_uvm/uvm/cov_work/scope/cov_work/scope/result.
+imc: *I,RUNLD: Successfully loaded run /sspsrv01/RISC-V/work/haohaoyang/IMDCT/IMDCT_test/sim_uvm/uvm/cov_work/scope/cov_work/scope/result.
+imc: *I,RUNLD: Successfully loaded run /sspsrv01/RISC-V/work/haohaoyang/IMDCT/IMDCT_test/sim_uvm/uvm/cov_work/scope/test_cov_appo.
+imc: *I,RUNLD: Successfully loaded run /sspsrv01/RISC-V/work/haohaoyang/IMDCT/IMDCT_test/sim_uvm/uvm/cov_work/scope/test_cov_appo1.
+imc: *I,RUNLD: Successfully loaded run /sspsrv01/RISC-V/work/haohaoyang/IMDCT/IMDCT_test/sim_uvm/uvm/cov_work/scope/test_cov_appo2.
+imc: *I,RUNLD: Successfully loaded run /sspsrv01/RISC-V/work/haohaoyang/IMDCT/IMDCT_test/sim_uvm/uvm/cov_work/scope/cov_work/scope/result.
+imc: *I,RUNLD: Successfully loaded run /sspsrv01/RISC-V/work/haohaoyang/IMDCT/IMDCT_test/sim_uvm/uvm/cov_work/scope/test_cov_appo1.
+imc: *I,RUNLD: Successfully loaded run /sspsrv01/RISC-V/work/haohaoyang/IMDCT/IMDCT_test/sim_uvm/uvm/cov_work/scope/test_cov_appo2.
