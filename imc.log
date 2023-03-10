@@ -1,0 +1,6 @@
+IMC(64): 21.03-s001: (c) Copyright 1995-2021 Cadence Design Systems Inc - Simulator version: 21.03-s001 - Coverage engine version: 21.03-s001
+Starting gui mode
+imc: *I,RUNLD: Successfully loaded run /sspsrv01/RISC-V/work/haohaoyang/IMDCT/IMDCT_test/sim_uvm/uvm/cov_work/scope/cov_work/scope/result.
+imc: *I,RUNLD: Successfully loaded run /sspsrv01/RISC-V/work/haohaoyang/IMDCT/IMDCT_test/sim_uvm/uvm/cov_work/scope/test_cov_appo1.
+imc: *I,RUNLD: Successfully loaded run /sspsrv01/RISC-V/work/haohaoyang/IMDCT/IMDCT_test/sim_uvm/uvm/cov_work/scope/test_cov_appo2.
+imc: *I,RUNLD: Successfully loaded run /sspsrv01/RISC-V/work/haohaoyang/IMDCT/IMDCT_test/sim_uvm/uvm/cov_work/scope/cov_work/scope/result.
