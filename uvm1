@@ -9,6 +9,7 @@ help() {
 	
 # Compile and run uvm size 128
 uvm_size_128(){
+	rm -rf libdpi.so
 	gcc *.c -Wall -m64 -fPIC -shared -o libdpi.so
 	xrun  -uvm +libtext_.v +xm64bit +xmtimescale+1ns/10ps +access+r +xmlicq +sv -seed $seed +define+SIZE0 -vlog_ext +.vh -disable_sem2009 \
 	-F filelist.f  -y /edatools/xilinx/Vivado/2020.1/data/verilog/src/unisims +libext+.v \
@@ -18,6 +19,7 @@ uvm_size_128(){
 
 # Compile and run uvm size 1024
 uvm_size_1024(){
+	rm -rf libdpi.so
 	gcc *.c -Wall -m64 -fPIC -shared -o libdpi.so
 	xrun  -uvm +libtext_.v +xm64bit +xmtimescale+1ns/10ps +access+r +xmlicq +sv  -seed $seed +define+SIZE1 -vlog_ext +.vh -disable_sem2009 \
 	-F filelist.f  -y /edatools/xilinx/Vivado/2020.1/data/verilog/src/unisims +libext+.v \

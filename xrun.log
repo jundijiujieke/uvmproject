@@ -1,5 +1,5 @@
 xrun(64): 19.09-s010: (c) Copyright 1995-2020 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	19.09-s010: Started on Mar 10, 2023 at 10:47:56 HKT
+TOOL:	xrun(64)	19.09-s010: Started on Mar 10, 2023 at 17:44:32 HKT
 xrun
 	-uvm
 	+libtext_.v
@@ -1384,4 +1384,4 @@ coverage setup:
 coverage files:
   model(design data) :  ./cov_work/scope/icc_47da2a22_00000000.ucm (reused)
   data               :  ./cov_work/scope/test_cov_appo2//icc_47da2a22_00000000.ucd
-TOOL:	xrun(64)	19.09-s010: Exiting on Mar 10, 2023 at 10:48:00 HKT  (total: 00:00:04)
+TOOL:	xrun(64)	19.09-s010: Exiting on Mar 10, 2023 at 17:44:36 HKT  (total: 00:00:04)
