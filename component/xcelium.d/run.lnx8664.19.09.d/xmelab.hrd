@@ -1,0 +1,13 @@
+//
+// File created by:  xrun
+// Do not modify this file
+//
+-timescale
+1ns/10ps
+-ACCESS
++r
+-DISABLE_SEM2009
+-COVERAGE
+B
+-COVDUT
+imdct_fft_with_ram256
