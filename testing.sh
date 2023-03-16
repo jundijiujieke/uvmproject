@@ -1,5 +1,5 @@
 for ((n=0;n<2;n++))
 do
-uvm1 -size 128 -seed n
-uvm1 -size 1024 -seed n
+make SIZE1=128 SEED1=n -s
+make SIZE1=1024 SEED1=n -s
 done
