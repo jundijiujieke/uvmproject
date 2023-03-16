@@ -1,0 +1,109 @@
+30d29
+< 	input rocc_tram_sel,
+182,183c181
+< 	reg rocc_resp_valid_reg;
+< 		
+---
+> 	
+196,197c194,196
+<     assign rocc_mem_req_bits_no_alloc=0;
+<     assign rocc_mem_req_bits_no_xcpt=0;
+---
+> //    assign rocc_mem_req_bits_phys=0;
+>     assign rocc_mem_req_bits_no_alloc=1;
+>     assign rocc_mem_req_bits_no_xcpt=1;
+206,207c205,206
+<   //assign rocc_busy = 1'b0;
+<   assign rocc_busy = mem_req_valid_reg|imdct_process;
+---
+>   assign rocc_busy = 1'b0;
+>   //assign rocc_busy = mem_req_valid_reg|imdct_process;
+232a232
+>   wire FFT_ONLY=imdct_setting[6];
+292,293c292,295
+< .func(1'b0),
+< .auto(1'b1),
+---
+> //.func(1'b0),
+> //.auto(1'b1),
+> .func(FFT_ONLY),
+> .auto(~FFT_ONLY),
+433c435
+< 	    	end	 
+---
+> 	    		end	 
+437,438d438
+< 				//imdct_process<=0;
+< 				//interrupt_reg<=1;
+448c448,451
+< 					mem_req_valid_reg<=0;
+---
+> 					if(~mem_read)
+> 					begin
+> 						mem_req_valid_reg<=0;
+> 					end
+452,453c455,456
+< 					//if(~imdct_process & mem_read)
+< 					if(~imdct_process )
+---
+> 					//if(~imdct_process )
+> 					if(~imdct_process & ~mem_read)					
+471d473
+< 			
+501c503
+< 	    	end	    
+---
+> 	    		end	    
+556c558,559
+< 					mem_read<=0;
+---
+> 					mem_read<=0;					
+> 					mem_req_valid_reg<=0;	//added 20210708
+561a565,568
+> 					else
+> 					begin
+> 						interrupt_reg<=1;
+> 					end
+603c610
+< //  assign rocc_resp_valid = doResp;
+---
+>   assign rocc_resp_valid = doResp;
+605d611
+<   assign rocc_resp_valid = rocc_resp_valid_reg;
+615,633d620
+< 
+< 
+<   reg tram_sel_0_r;
+<   reg tram_sel_fall;
+<   //wire tram_sel_0_w = TestDriver.design_1_i.RISCV_R32_CPC_0.inst.U_ExampleRocketSystem.tram_sel_0;
+<   wire tram_sel_0_w = rocc_tram_sel;
+< 
+<   always @ *
+<   begin
+<   case (rocc_cmd_bits_inst_funct_d)
+<   0: rocc_resp_valid_reg <=doResp;
+<   1: rocc_resp_valid_reg <=doResp;
+<   2: rocc_resp_valid_reg <=doResp;
+<   3: rocc_resp_valid_reg <=doResp;  
+<   4: rocc_resp_valid_reg <=doResp;  
+<   6: rocc_resp_valid_reg <=tram_sel_fall;    
+<   default : rocc_resp_valid_reg <=doResp;
+<   endcase
+<   end
+653c640
+< always @ (posedge clock or posedge reset) 
+---
+> always @ (posedge clock) 
+655,664c642
+< 	if (reset) 
+< 	begin
+< 	  	tram_sel_0_r<=0;
+< 		tram_sel_fall<=0;
+< 	end
+< 	else
+< 	begin
+< 	  	tram_sel_0_r<=tram_sel_0_w;
+< 		tram_sel_fall<=tram_sel_0_r & ~tram_sel_0_w;
+< 	end
+---
+> 
