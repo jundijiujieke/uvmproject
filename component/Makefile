@@ -5,7 +5,7 @@ FILE=uvm.shm  xcelium.d  xrun.history  xrun.log
 COM=xrun  -uvm +libtext_.v +xm64bit +xmtimescale+1ns/10ps +access+r -seed $(SEED1) +xmlicq +sv -vlog_ext +.vh -disable_sem2009 \
 	-F filelist.f  -y /edatools/xilinx/Vivado/2020.1/data/verilog/src/unisims +libext+.v \
 	-sv_lib libdpi.so\
-	-covoverwrite -coverage B -covdut imdct_fft_with_ram256 -input ./uvm.cmd
+	-covoverwrite -coverage A -covdut imdct_fft_with_ram256 -input ./uvm.cmd
 
 ifndef SEED1
 	SEED1:=defualt-size

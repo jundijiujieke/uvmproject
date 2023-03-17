@@ -1,0 +1,5 @@
+IMC(64): 21.03-s001: (c) Copyright 1995-2021 Cadence Design Systems Inc - Simulator version: 21.03-s001 - Coverage engine version: 21.03-s001
+Starting gui mode
+imc: *I,RUNLD: Successfully loaded run /sspsrv01/RISC-V/work/haohaoyang/IMDCT/IMDCT_test/sim_uvm/uvm2/component/cov_work/scope/cov_work/scope/result.
+Adding recursive exclude covered to block 'imdct_fft_with_ram256/imdct/imdct_rom576x64/3'
+Adding review to block 'imdct_fft_with_ram256/imdct/imdct_rom257x64/3'

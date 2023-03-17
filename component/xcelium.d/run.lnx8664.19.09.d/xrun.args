@@ -23,7 +23,7 @@ filelist.f
 libdpi.so
 -covoverwrite
 -coverage
-B
+A
 -covdut
 imdct_fft_with_ram256
 -input

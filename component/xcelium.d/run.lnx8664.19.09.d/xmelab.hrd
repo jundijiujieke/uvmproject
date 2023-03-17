@@ -8,6 +8,6 @@
 +r
 -DISABLE_SEM2009
 -COVERAGE
-B
+A
 -COVDUT
 imdct_fft_with_ram256
