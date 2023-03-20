@@ -1,20 +1,4 @@
-+incdir+./
-./top_tb.sv
-./my_case0.sv
-./my_if.sv
-./my_transaction.sv
-./my_driver.sv
-./my_monitor.sv
-./my_scoreboard.sv
-./my_agent.sv
-./my_model.sv
-./my_env.sv
-./my_sequencer.sv
-./base_test.sv
-
-
-
-
++incdir+../rtl
 ../rtl/fft/ram256x32.v
 ../rtl/fft/r4r8_1st_pass_core.v
 ../rtl/fft/rom_twidTabOdd.v
@@ -36,9 +20,3 @@
 
 
 
-
-
-
-
-
-#/sspsrv01/RISC-V/work/haohaoyang/test/UVM/example_uvm/puvm/src/ch2/dut/dut.sv

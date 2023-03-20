@@ -1,0 +1,10 @@
+TB:=../component
+RTL:=../rtl
+COM:=+incdir+
+run:
+	echo "$(COM)$(TB)">>sv_filelist.f
+	find $(TB) -name '*sv' > sv_filelist.f
+	echo "$(COM)$(RTL)">>rtl_filelist.f
+	find $(RTL) -name '*.v' > rtl_filelist.f
+clean:
+	rm -rf *.f*
