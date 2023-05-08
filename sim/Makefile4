@@ -1,0 +1,92 @@
+CFLAGS= -Wall -fPIC -m64
+SHARED= -shared
+DIR=../cmodel/
+DIR1=../tb/
+DIR2=../filelist
+FILE=uvm.shm  xcelium.d  xrun.history  xrun.log
+COM=xrun -uvm +libtext_.v +xm64bit +xmtimescale+1ns/10ps +access+r -seed $(SEED1) +xmlicq +sv -vlog_ext +.vh -disable_sem2009 \
+	-F ../rtl/rtl_filelist.f -F ../tb/sv_filelist.f -y /edatools/xilinx/Vivado/2020.1/data/verilog/src/unisims +libext+.v \
+	-sv_lib libdpi.so\
+	-l xrun_mode$(SIZE1)_seed$(SEED1).log\
+	-covoverwrite -coverage A -covdut imdct_fft_with_ram256 -input ./uvm.cmd
+COMP=xrun -compile -uvm +libtext_.v +xm64bit +access+r -seed $(SEED1) +xmlicq +sv -vlog_ext +.vh -disable_sem2009 \
+	-F ../rtl/rtl_filelist.f -F ../component/sv_filelist.f -y /edatools/xilinx/Vivado/2020.1/data/verilog/src/unisims +libext+.v \
+	-sv_lib libdpi.so\
+ELAB=xrun -elaborate -uvm +libtext_.v +xm64bit +xmtimescale+1ns/10ps +access+r -seed $(SEED1) +xmlicq +sv -vlog_ext +.vh -disable_sem2009 \
+	-F ../rtl/rtl_filelist.f -F ../component/sv_filelist.f -y /edatools/xilinx/Vivado/2020.1/data/verilog/src/unisims +libext+.v \
+	-sv_lib libdpi.so\
+	-l xrun_mode$(SIZE1)_seed$(SEED1).log\
+	-covoverwrite -coverage A -covdut imdct_fft_with_ram256 -input ./uvm.cmd
+SIM=xrun -R
+ifndef SEED1
+	SEED1:=defualt-size
+else
+	SEED1:=$(SEED1)
+endif
+
+ifndef SIZE1
+	SIZE1:=defualt-size
+else
+	SIZE1:=$(SIZE1)
+endif
+
+ifeq ($(SIZE1),128)
+	RUN:=$(COM) +define+SIZE0 -covtest test_cov_appo0
+	RUN_COMP:=$(COMP) +define+SIZE0 -covtest test_cov_appo0
+	RUN_ELAB:=$(ELAB) +define+SIZE0 -covtest test_cov_appo0
+
+else
+	ifeq ($(SIZE1),1024)
+		RUN:=$(COM) +define+SIZE1 -covtest test_cov_appo1
+		RUN_COMP:=$(COMP) +define+SIZE1 -covtest test_cov_appo1
+		RUN_ELAB:=$(ELAB) +define+SIZE1 -covtest test_cov_appo1
+	else		
+	endif
+endif
+
+run:libdpi.so
+	$(RUN)
+comp:libdpi.so
+	$(RUN_COMP)
+elab:libdpi.so
+	$(RUN_ELAB)
+sim:libdpi.so
+	$(SIM)
+
+libdpi.so:
+	$(CC) $(CFLAGS) $(SHARED) $(DIR)*.c -o libdpi.so
+clean:	
+	$(RM) -r *.so* *.txt* x*.* uvm.shm xcelium.d cov_work
+show:
+	echo $(wildcard ./src/*.c) 
+	echo $(SIZE1)
+	echo $(SEED1)
+#
+#run:
+#	xrun  -uvm +libtext_.v +xm64bit +xmtimescale+1ns/10ps +access+r +xmlicq +sv  -vlog_ext +.vh -disable_sem2009 \
+	-F filelist.f \
+	-input uvm.cmd -covoverwrite -coverage B -covdut dut -covtest test_cov_appo
+#comp:
+#	xrun -compile -uvm +libtext_.v +xm64bit +xmtimescale+1ns/10ps +access+r +xmlicq +sv  -vlog_ext +.vh -disable_sem2009 \
+	-F filelist.f 
+#elab:
+#	xrun  -elaborate -uvm +libtext_.v +xm64bit +xmtimescale+1ns/10ps +access+r +xmlicq +sv  -vlog_ext +.vh -disable_sem2009 \
+	-F filelist.f \
+	-coverage B -covdut dut -covtest test_cov_appo \
+	-input uvm.cmd 
+#sim:
+#	xrun -R\
+*/		
+#	RUN_COMP:=$(COMP) +define+SIZE0 -covtest test_cov_appo0
+#	RUN_ELAB:=$(ELAB) +define+SIZE0 -covtest test_cov_appo0
+#		RUN_COMP:=$(COMP) +define+SIZE1 -covtest test_cov_appo1
+#		RUN_ELAB:=$(ELAB) +define+SIZE1 -covtest test_cov_appo1
+#comp:libdpi.so
+#	$(RUN_COMP)
+#elab:libdpi.so
+#	$(RUN_ELAB)
+#sim:libdpi.so
+#	$(SIM)
+	
+#clean:
+#	rm -rf x*.* cov_work

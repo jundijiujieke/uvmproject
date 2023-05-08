@@ -1,11 +1,10 @@
 CFLAGS= -Wall -fPIC -m64
 SHARED= -shared
-DIR=../cmodel/
-DIR1=../tb/
-DIR2=../filelist
+DIR=../mode/
+DIR1=component/
 FILE=uvm.shm  xcelium.d  xrun.history  xrun.log
 COM=xrun  -uvm +libtext_.v +xm64bit +xmtimescale+1ns/10ps +access+r -seed $(SEED1) +xmlicq +sv -vlog_ext +.vh -disable_sem2009 \
-	-F $(DIR2)/rtl_filelist.f -F $(DIR2)/sv_filelist.f -y /edatools/xilinx/Vivado/2020.1/data/verilog/src/unisims +libext+.v \
+	-F filelist.f  -y /edatools/xilinx/Vivado/2020.1/data/verilog/src/unisims +libext+.v \
 	-sv_lib libdpi.so\
 	-l xrun_mode$(SIZE1)_seed$(SEED1).log\
 	-covoverwrite -coverage A -covdut imdct_fft_with_ram256 -input ./uvm.cmd
