@@ -33,9 +33,9 @@ package ibex_pkg;
   /////////////////////
 
   typedef enum integer {
-    RegFileFF    = 0,
-    RegFileFPGA  = 1,
-    RegFileLatch = 2
+    RegFileFF    = 0,//flip-flop-based
+    RegFileFPGA  = 1,//latched-based
+    RegFileLatch = 2//FPGA-targeted
   } regfile_e;
 
   typedef enum integer {

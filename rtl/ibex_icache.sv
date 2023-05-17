@@ -13,11 +13,12 @@
 module ibex_icache import ibex_pkg::*; #(
   parameter bit          ICacheECC       = 1'b0,
   parameter bit          ResetAll        = 1'b0,
-  parameter int unsigned BusSizeECC      = BUS_SIZE,
+  parameter int unsigned BusSizeECC      = BUS_SIZE,//Width of instruction bus. Note, this is fixed at 32 for Ibex at the moment./
   parameter int unsigned TagSizeECC      = IC_TAG_SIZE,
-  parameter int unsigned LineSizeECC     = IC_LINE_SIZE,
+  parameter int unsigned LineSizeECC     = IC_LINE_SIZE,//The width of one cache line in bits. Line sizes smaller than 64 bits may give compilation errors.
   // Only cache branch targets
   parameter bit          BranchCache     = 1'b0
+  //When set, the cache will only allocate the targets of branches + two subsequent cache lines. This gives improved performance in systems with moderate latency by not polluting the cach//e with data that can be prefetched instead. //When not set, all misses are allocated.?????
 ) (
   // Clock and reset
   input  logic                           clk_i,

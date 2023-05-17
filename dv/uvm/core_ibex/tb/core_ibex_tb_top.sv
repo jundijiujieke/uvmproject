@@ -318,7 +318,7 @@ module core_ibex_tb_top;
     if (PMPEnable) begin
       uvm_config_db#(bit [31:0])::set(null, "*", "PMPNumRegions", PMPNumRegions);
       uvm_config_db#(bit [31:0])::set(null, "*", "PMPGranularity", PMPGranularity);
-    end else begin
+    end else begin/sspsrv01/RISC-V/work/haohaoyang/RISC-V/ibex/dv/uvm/core_ibex/tb
       uvm_config_db#(bit [31:0])::set(null, "*", "PMPNumRegions", 0);
       uvm_config_db#(bit [31:0])::set(null, "*", "PMPGranularity", 0);
     end
